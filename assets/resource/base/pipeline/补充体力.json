@@ -1,0 +1,40 @@
+{
+    "补充体力":{
+        "next":[
+            "检测购买体力",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "购买体力"
+        ]
+    },
+
+    "检测购买体力":{
+        "recognition": "OCR",
+        "expected":"Purchase AP",
+        "next":[
+            "确认",
+
+            "清除弹窗（补充体力）"
+        ]
+    },
+
+    "购买体力":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Energy.png",
+        "action": "Click",
+        "target_offset": [125,0,0,0]
+    },
+
+    "清除弹窗（补充体力）":{
+        "action": "Click",
+        "target": [380,30,0,0],
+        "next":[
+            "清除弹窗（补充体力）"
+        ],
+        "times_limit": 5
+    }
+}

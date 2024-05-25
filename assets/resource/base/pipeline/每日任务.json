@@ -1,0 +1,43 @@
+{
+    "每日任务":{
+        "next":[
+            "检测进入每日任务",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入每日任务"
+        ]
+    },
+
+    "检测进入每日任务":{
+        "recognition": "OCR",
+        "expected":"Tasks",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "领取"
+        ]
+    },
+
+    "进入每日任务":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Tasks.png",
+        "green_mask": true,
+        "action": "Click"
+    },
+
+    "领取":{
+        "recognition": "OCR",
+        "expected":"Claim",
+        "action": "Click",
+        "times_limit": 5,
+        "next":[
+            "领取"
+        ],
+        "runout_next":[
+            "退出"
+        ]
+    }
+}

@@ -1,0 +1,90 @@
+{
+    "困难主线":{
+        "next":[
+            "检测主线",
+
+            "检测进入战斗大厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入战斗大厅"
+        ]
+    },
+
+    "检测主线":{
+        "recognition": "OCR",
+        "expected":"Mission",
+        "next":[
+            "检测进入主线",
+
+            "检测是否在加载",
+
+            "进入主线"
+        ]
+    },
+
+    "检测进入主线":{
+        "recognition": "OCR",
+        "expected":"Select",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "进入困难"
+        ]
+            
+    },
+
+    "检测对应关卡":{
+        "next":[
+            "检测有对应关卡",
+
+            "向左跳转关卡列表"
+        ]
+    },
+
+    "检测有对应关卡":{
+        "recognition": "OCR",
+        "expected":"13-1",
+        "action": "Click",
+        "target_offset": [400,0,0,0],
+        "next":[
+            "检测进入关卡（MAX）"
+        ]
+    },
+
+    "进入主线":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Mission",
+        "action": "Click"
+    },
+
+    "进入困难":{
+        "recognition": "OCR",
+        "expected":"Hard",
+        "roi": [940, 130, 260, 60],
+        "action": "Click",
+        "next":[
+            "向右跳转关卡列表",
+
+            "检测对应关卡"
+        ]
+    },
+
+    "向右跳转关卡列表":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Right.png",
+        "green_mask": true,
+        "action": "Click"
+    },
+
+    "向左跳转关卡列表":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Left.png",
+        "green_mask": true,
+        "action": "Click"
+    }
+}

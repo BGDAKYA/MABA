@@ -1,0 +1,77 @@
+{
+    "多人混战":{
+        "next":[
+            "检测多人混战",
+
+            "检测进入战斗大厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入战斗大厅"
+        ]
+    },
+
+    "检测多人混战":{
+        "recognition": "OCR",
+        "expected":"Scrimmage",
+        "next":[
+            "检测进入多人混战",
+
+            "检测是否在加载",
+
+            "进入多人混战"
+        ]
+    },
+
+    "检测进入多人混战":{
+        "recognition": "OCR",
+        "expected":"Scrimmage",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入崔妮蒂",
+
+            "检测是否在加载",
+
+            "进入崔妮蒂"
+        ]
+    },
+
+    "检测进入崔妮蒂":{
+        "recognition": "OCR",
+        "expected":"Trinity",
+        "roi": [98, 136, 515, 51],
+        "next":[
+            "检测进入关卡（MAX）",
+
+            "检测是否在加载",
+
+            "进入关卡（多人混战）",
+
+            "向上滑动关卡列表"
+        ]
+    },
+
+    "进入多人混战":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Scrimmage",
+        "action": "Click"
+    },
+
+    "进入崔妮蒂":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Trinity",
+        "action": "Click"
+    },
+
+    "进入关卡（多人混战）":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"01",
+        "action": "Click",
+        "target_offset": [400,0,0,0]
+    }
+}

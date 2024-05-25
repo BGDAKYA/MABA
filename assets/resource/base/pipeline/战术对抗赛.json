@@ -1,0 +1,123 @@
+{
+    "战术对抗赛":{
+        "next":[
+            "检测战术对抗赛",
+
+            "检测进入战斗大厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入战斗大厅"
+        ]
+    },
+
+    "检测战术对抗赛":{
+        "recognition": "OCR",
+        "expected":"Tactical",
+        "next":[
+            "检测进入战术对抗赛",
+
+            "检测是否在加载",
+
+            "进入战术对抗赛"
+        ]
+    },
+
+    "检测进入战术对抗赛":{
+        "recognition": "OCR",
+        "expected":"Tactical",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "领取奖励",
+
+            "检测选择玩家",
+
+            "检测是否在加载",
+
+            "选择玩家"
+        ]
+    },
+
+    "检测选择玩家":{
+        "recognition": "OCR",
+        "expected":"Opponent",
+        "next":[
+            "检测进入阵容设定",
+
+            "检测是否无票券",
+
+            "检测是否在加载",
+
+            "进入阵容设定"
+        ]
+    },
+
+    "检测进入阵容设定":{
+        "recognition": "OCR",
+        "expected":"Attack",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测开启跳过战斗",
+
+            "开启跳过战斗"
+        ]
+    },
+
+    "检测开启跳过战斗":{
+        "recognition": "TemplateMatch",
+        "template": "Skipped.png",
+        "roi": [1080, 580, 50, 50],
+        "next":[
+            "开始部署"
+        ]
+    },
+
+    "进入战术对抗赛":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Tactical",
+        "action": "Click"
+    },
+
+    "选择玩家":{
+        "is_sub": true,
+        "action": "Click",
+        "target": [630,625,0,0]
+    },
+
+    "进入阵容设定":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Attack",
+        "action": "Click"
+    },
+
+    "开启跳过战斗":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Skip",
+        "action": "Click"
+    },
+
+    "开始部署":{
+        "recognition": "OCR",
+        "expected":"Mobilize",
+        "action": "Click",
+        "post_delay": 60000,
+        "next":[
+            "确认",
+
+            "检测进入战术对抗赛"
+        ]
+    },
+
+    "领取奖励":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Claim2.1.png",
+        "threshold":0.9,
+        "action": "Click"
+    }
+}

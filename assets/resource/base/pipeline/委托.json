@@ -1,0 +1,111 @@
+{
+    "委托":{
+        "next":[
+            "检测委托",
+
+            "检测进入战斗大厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入战斗大厅"
+        ]
+    },
+
+    "检测委托":{
+        "recognition": "OCR",
+        "expected":"Commissions",
+        "next":[
+            "检测进入委托",
+
+            "检测是否在加载",
+
+            "进入委托"
+        ]
+    },
+
+    "检测进入委托":{
+        "recognition": "OCR",
+        "expected":"Commissions",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入基地防御",
+
+            "检测是否在加载",
+
+            "进入基地防御"
+        ]
+    },
+
+    "检测进入基地防御":{
+        "recognition": "OCR",
+        "expected":"Defense",
+        "roi": [98, 136, 515, 51],
+        "next":[
+            "检测进入关卡（次数）",
+
+            "检测是否在加载",
+
+            "进入关卡（委托）",
+
+            "向上滑动关卡列表"
+        ]
+    },
+
+    "检测进入关卡（次数）":{
+        "recognition": "OCR",
+        "expected":"Info",
+        "next":[
+            "开始扫荡"
+        ]
+    },
+
+    "进入委托":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Commissions",
+        "action": "Click"
+    },
+
+    "进入基地防御":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Defense",
+        "action": "Click"
+    },
+
+    "进入关卡（委托）":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"08",
+        "action": "Click",
+        "target_offset": [400,0,0,0]
+    },
+
+    "N 选择次数":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"+",
+        "action": "Click",
+        "times_limit": 5,
+        "next":[
+            "开始扫荡"
+        ]
+    },
+
+    "向上滑动关卡列表":{
+        "is_sub": true,
+        "action": "Swipe",
+        "begin": [915,235,0,0],
+        "end": [915,435,0,0]
+    },
+
+    "N 向下滑动关卡列表":{
+        "is_sub": true,
+        "action": "Swipe",
+        "begin": [915,630,0,0],
+        "end": [915,0,0,0],
+        "times_limit": 1
+    }
+}

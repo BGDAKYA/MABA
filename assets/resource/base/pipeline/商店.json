@@ -1,0 +1,99 @@
+{
+    "商店":{
+        "next":[
+            "检测进入商店",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入商店"
+        ]
+    },
+
+    "检测进入商店":{
+        "recognition": "OCR",
+        "expected":"Shop",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入战术对抗赛商店",
+
+            "检测是否在加载",
+
+            "进入战术对抗赛商店",
+
+            "滑动列表"
+        ]
+    },
+
+    "检测进入战术对抗赛商店":{
+        "recognition": "TemplateMatch",
+        "template": "Tactical Coin.png",
+        "green_mask": true,
+        "roi": [863, 63, 97, 42],
+        "next":[
+            "选择体力药剂1"
+        ]
+    },
+
+    "进入商店":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Shop",
+        "action": "Click"
+    },
+
+    "进入战术对抗赛商店":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "Tactical",
+        "action": "Click"
+    },
+
+    "滑动列表":{
+        "is_sub": true,
+        "action": "Swipe",
+        "begin": [110, 530, 0, 0],
+        "end": [110, 140, 0, 0]
+    },
+
+    "选择体力药剂1":{
+        "recognition": "TemplateMatch",
+        "template": "Lesser Energy.png",
+        "green_mask": true,
+        "action": "Click",
+        "next":[
+            "选择体力药剂2"
+        ]
+    },
+
+    "选择体力药剂2":{
+        "recognition": "TemplateMatch",
+        "template": "Normal Energy.png",
+        "green_mask": true,
+        "action": "Click",
+        "next":[
+            "购买"
+        ]
+    },
+
+    "购买":{
+        "recognition": "OCR",
+        "expected":"Selected",
+        "action": "Click",
+        "next":[
+            "确认",
+
+            "检测是否在加载",
+
+            "退出"
+        ]
+    },
+
+    "确认":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Confirm",
+        "action": "Click"
+    }
+}

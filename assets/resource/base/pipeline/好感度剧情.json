@@ -1,0 +1,198 @@
+{
+    "好感度剧情":{
+        "next":[
+            "检测进入好感度剧情",
+
+            "检测是否在加载",
+
+            "进入好感度剧情"
+        ]
+    },
+
+    "检测进入好感度剧情":{
+        "recognition": "TemplateMatch",
+        "template": "InMomoTalk.png",
+        "next":[
+            "检测进入未读信息",
+
+            "进入未读信息"
+        ]
+    },
+
+    "检测进入未读信息":{
+        "recognition": "OCR",
+        "expected":"Unread",
+        "next":[
+            "检测有未读信息",
+
+            "清除弹窗（补充体力）"
+        ]
+    },
+
+    "检测有未读信息":{
+        "recognition": "TemplateMatch",
+        "template": "Unread.png",
+        "next":[
+            "检测是否为未读信息排序",
+
+            "修改为未读信息排序"
+        ]
+    },
+
+    "检测是否为未读信息排序":{
+        "recognition": "OCR",
+        "expected":"Unread",
+        "roi": [468, 162, 84, 30],
+        "next":[
+            "检测降序排列（好感度剧情）",
+
+            "改为降序排列"
+        ]
+    },
+
+    "检测降序排列（好感度剧情）":{
+        "recognition": "TemplateMatch",
+        "template": "Down.png",
+        "roi": [630, 160, 20, 30],
+        "next":[
+            "检测进入对话",
+
+            "检测是否在加载",
+
+            "选择对话"
+        ]
+    },
+
+    "检测进入对话":{
+        "recognition": "OCR",
+        "expected":"Select",
+        "inverse": true,
+        "next":[
+            "检测进入剧情",
+
+            "跳过对话"
+        ]
+    },
+
+    "检测进入剧情":{
+        "recognition": "OCR",
+        "expected":"Auto",
+        "next":[
+            "跳过剧情"
+        ]
+    },
+
+    "检测对话结束":{
+        "recognition": "TemplateMatch",
+        "template": "InMomoTalk.png",
+        "post_wait_freezes":{
+            "time": 1000,
+            "target": [805,580,0,0]
+        },
+        "next":[
+            "检测有回复框",
+
+            "清除弹窗（补充体力）"
+        ]
+    },
+
+    "检测有回复框":{
+        "recognition": "OCR",
+        "expected":"Reply",
+        "action": "Click",
+        "target_offset": [0,55,0,0],
+        "post_wait_freezes":{
+            "time": 1000,
+            "target": [805,580,0,0]
+        },
+        "next":[
+            "检测对话结束"
+        ]
+    },
+
+    "进入好感度剧情":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "MomoTalk.png",
+        "green_mask": true,
+        "threshold":0.6,
+        "action": "Click"
+    },
+
+    "进入未读信息":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Dialog.png",
+        "green_mask": true,
+        "threshold":0.5,
+        "action": "Click"
+    },
+
+    "修改为未读信息排序":{
+        "action": "Click",
+        "target": [510,175,0,0],
+        "next":[
+            "选择未读"
+        ]
+    },
+
+    "选择未读":{
+        "action": "Click",
+        "target": [555,295,0,0],
+        "next":[
+            "确认",
+
+            "检测是否为未读信息排序"
+        ]
+    },
+
+    "改为降序排列":{
+        "is_sub": true,
+        "action": "Click",
+        "target": [625,175,0,0]
+    },
+
+    "选择对话":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Unread.png",
+        "roi": [611, 214, 72, 74],
+        "action": "Click"
+    },
+
+    "跳过对话":{
+        "is_sub": true,
+        "action": "Click",
+        "target": [925,580,0,0]
+    },
+
+    "跳过剧情":{
+        "recognition": "OCR",
+        "expected":"Menu",
+        "action": "Click",
+        "next":[
+            "选择跳过"
+        ]
+    },
+
+    "选择跳过":{
+        "recognition": "TemplateMatch",
+        "template": "Skip.png",
+        "green_mask": true,
+        "action": "Click",
+        "next":[
+            "确认",
+
+            "清除奖励提示"
+        ]
+    },
+
+    "清除奖励提示":{
+        "recognition": "OCR",
+        "expected":"TOUCH",
+        "action": "Click",
+        "next":[
+            "检测对话结束"
+        ]
+    }
+}

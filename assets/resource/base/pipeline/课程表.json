@@ -1,0 +1,175 @@
+{
+    "课程表":{
+        "next":[
+            "检测进入课程表",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入课程表"
+        ]
+    },
+
+    "检测进入课程表":{
+        "recognition": "OCR",
+        "expected":"Lesson",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入地区选择",
+
+            "检测是否在加载",
+
+            "进入地区选择"
+        ]
+    },
+
+    "检测进入地区选择":{
+        "recognition": "OCR",
+        "expected":"Select Location",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入全部地区",
+
+            "检测是否在加载",
+
+            "进入全部地区"
+        ]
+    },
+
+    "检测进入全部地区":{
+        "recognition": "OCR",
+        "expected":"All",
+        "roi": [535, 97, 212, 40],
+        "next":[
+            "检测好感度学生",
+
+            "检测是否在加载",
+
+            "清除弹窗（课程表）"
+        ]
+    },
+
+    "检测好感度学生":{
+        "recognition": "TemplateMatch",
+        "template": "Heart2.png",
+        "green_mask": true,
+        "threshold":0.65,
+        "next":[
+            "检测进入地区详情",
+
+            "检测是否在加载",
+
+            "进入地区详情"
+        ]
+    },
+
+    "检测进入地区详情":{
+        "recognition": "OCR",
+        "expected":"Info",
+        "next":[
+            "检测课程结束",
+
+            "开始课程",
+
+            "检测是否无票券",
+
+            "检测是否在课程中",
+
+            "检测是否在加载",
+
+            "检测好感度提升"
+        ]
+    },
+
+    "检测是否无票券":{
+        "recognition": "OCR",
+        "expected":["Purchase","purchase","recharge","Restore"],
+        "next":[
+            "退出"
+        ]
+    },
+
+    "检测是否在课程中":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Progress",
+        "pre_delay": 1000
+    },
+
+    "检测课程结束":{
+        "recognition": "OCR",
+        "expected":"Report",
+        "next":[
+            "检测进入全部地区",
+
+            "检测是否在加载",
+
+            "退出课程汇报"
+        ]
+    },
+
+    "进入课程表":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Lesson",
+        "action": "Click"
+    },
+
+    "进入地区选择":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Rank",
+        "order_by": "Random",
+        "action": "Click"
+    },
+
+    "进入全部地区":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"All",
+        "action": "Click"
+    },
+
+    "切换区域":{
+        "recognition": "TemplateMatch",
+        "template": "Right(Green).png",
+        "green_mask": true,
+        "action": "Click",
+        "next":[
+            "检测进入地区选择"
+        ]
+    },
+
+    "进入地区详情":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Heart2.png",
+        "green_mask": true,
+        "threshold":0.65,
+        "action": "Click"
+    },
+
+    "开始课程":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Start",
+        "action": "Click"
+
+    },
+
+    "退出课程汇报":{
+        "is_sub": true,
+        "recognition":"OCR",
+        "expected":"Confirm",
+        "action": "Click"
+    },
+
+    "清除弹窗（课程表）":{
+        "action": "Click",
+        "target": [380,30,0,0],
+        "next":[
+            "切换区域"
+        ]
+    }
+}

@@ -1,0 +1,273 @@
+{
+    "咖啡厅":{
+        "next":[
+            "检测进入咖啡厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入咖啡厅"
+        ]
+    },
+
+    "检测UI":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Tasks.png",
+        "green_mask": true,
+        "inverse": true,
+        "action": "Click",
+        "target": [380,30,0,0]
+    },
+
+    "检测进入咖啡厅":{
+        "recognition": "OCR",
+        "expected":"Schale Cafe",
+        "pre_delay": 1000,
+        "next":[
+            "检测入驻刷新弹窗",
+
+            "检测有邀请券",
+
+            "检测无邀请券"
+        ]
+    },
+
+    "检测有咖啡厅2":{
+        "recognition": "OCR",
+        "expected":"No. 2",
+        "action": "Click",
+        "next":[
+            "检测进入咖啡厅",
+
+            "检测是否在加载"
+        ]
+    },
+    
+    "检测无咖啡厅2":{
+        "next":[
+            "退出"
+        ]
+    },
+
+    "检测入驻刷新弹窗":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Confirm",
+        "action": "Click"
+    },
+    
+    "检测有邀请券":{
+        "recognition":"TemplateMatch",
+        "template": "Invite1.png",
+        "green_mask": true,
+        "action": "Click",
+        "next":[
+            "切换排序条件"
+        ]
+    },
+
+    "检测无邀请券":{
+        "recognition": "TemplateMatch",
+        "template": "Invite2.png",
+        "green_mask": true,
+        "next":[
+            "领取好感",
+
+            "检测好感度提升",
+
+            "查看资源"
+        ]
+    },
+
+    "检测是否在邀请":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Inviting",
+        "pre_delay": 1000
+    },
+
+    "检测好感度提升":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Relationship rank up!",
+        "action": "Click"
+    },
+
+    "检测升序排列":{
+        "recognition": "TemplateMatch",
+        "template": "Up.png",
+        "roi": [825, 140, 18, 23],
+        "next":[
+            "邀请角色"
+        ]
+    },
+
+    "检测降序排列":{
+        "recognition": "TemplateMatch",
+        "template": "Down.png",
+        "roi": [825, 140, 18, 23],
+        "action": "Click",
+        "next":[
+            "邀请角色"
+        ]
+    },
+
+    "检测Claim":{
+        "recognition": "OCR",
+        "expected":"Claim",
+        "inverse": true,
+        "next":[
+            "切换咖啡厅"
+        ]
+    },
+
+    "N 缩小画面":{
+        
+    },
+
+    "进入咖啡厅":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Cafe",
+        "action": "Click"
+    },
+
+    "切换咖啡厅":{
+        "recognition": "OCR",
+        "expected":"Move Cafe",
+        "action": "Click",
+        "next":[
+            "检测有咖啡厅2",
+
+            "检测是否在加载",
+
+            "检测无咖啡厅2"
+        ],
+        "times_limit": 1,
+        "runout_next":[
+            "退出"
+        ]
+    },
+
+    "切换排序条件":{
+        "action": "Click",
+        "target": [705,150,0,0],
+        "next":[
+            "选择好感度等级"
+        ]
+    },
+
+    "选择好感度等级":{
+        "recognition": "OCR",
+        "expected":"Relationship",
+        "action": "Click",
+        "next":[
+            "选择确认"
+        ]
+    },
+
+    "选择确认":{
+        "recognition": "OCR",
+        "expected":"Confirm",
+        "action": "Click",
+        "next":[
+            "检测升序排列",
+
+            "检测降序排列"
+        ]
+    },
+
+    "邀请角色":{
+        "recognition": "OCR",
+        "expected":"Invite",
+        "order_by": "Horizontal",
+        "index": 0,
+        "action": "Click",
+        "next":[
+            "确认邀请角色"
+        ]
+    },
+
+    "确认邀请角色":{
+        "recognition": "OCR",
+        "expected":"Confirm",
+        "action": "Click",
+        "post_delay": 5000,
+        "next":[
+            "确认邀请角色",
+
+            "检测是否在邀请",
+
+            "领取好感",
+
+            "检测好感度提升",
+
+            "查看资源"
+        ]
+    },
+
+    "领取好感":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Favor.png",
+        "threshold":0.4,
+        "green_mask": true,
+        "action": "Click",
+        "target_offset": [45,0,0,0],
+        "pre_delay": 2000
+    },
+
+    "查看资源":{
+        "recognition": "OCR",
+        "expected":"Cafe Earnings",
+        "action": "Click",
+        "next":[
+            "领取资源"
+        ]
+    },
+
+    "领取资源":{
+        "recognition": "OCR",
+        "expected":"Claim",
+        "action": "Click",
+        "next":[
+            "清除弹窗（咖啡厅）"
+        ]
+    },
+
+    "点击关闭":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Close.png",
+        "action": "Click"
+    },
+
+    "返回":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Home.png",
+        "action": "Click"
+    },
+
+    "退出":{
+        "next":[
+            "检测主界面",
+
+            "返回"
+        ]
+    },
+
+    "清除弹窗（咖啡厅）":{
+        "action": "Click",
+        "target": [380,30,0,0],
+        "times_limit": 5,
+        "next":[
+            "清除弹窗（咖啡厅）"
+        ],
+        "runout_next":[
+            "切换咖啡厅"
+        ]
+    }
+}

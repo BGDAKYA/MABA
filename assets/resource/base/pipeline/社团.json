@@ -1,0 +1,28 @@
+{
+    "社团":{
+        "next":[
+            "检测进入社团",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入社团"
+        ]
+    },
+
+    "检测进入社团":{
+        "recognition":"OCR",
+        "expected":"Lobby",
+        "next":[
+            "退出"
+        ]
+    },
+
+    "进入社团":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Club",
+        "action": "Click"
+    }
+}

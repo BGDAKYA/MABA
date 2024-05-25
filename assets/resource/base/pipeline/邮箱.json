@@ -1,0 +1,38 @@
+{
+    "邮箱":{
+        "next":[
+            "检测进入邮箱",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入邮箱"
+        ]
+    },
+
+    "检测进入邮箱":{
+        "recognition": "OCR",
+        "expected":"Mailbox",
+        "next":[
+            "领取全部"
+        ]
+    },
+
+    "进入邮箱":{
+        "is_sub": true,
+        "recognition": "TemplateMatch",
+        "template": "Mailbox.png",
+        "action": "Click",
+        "post_delay": 1000
+    },
+
+    "领取全部":{
+        "recognition": "OCR",
+        "expected":"Claim All",
+        "action": "Click",
+        "next":[
+            "退出"
+        ]
+    }
+}

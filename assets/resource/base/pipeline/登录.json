@@ -1,0 +1,93 @@
+{
+    "登录":{
+        "next": [
+            "点击登录按钮",
+
+            "跳过登录前推送",
+
+            "检测报错",
+            
+            "启动App"
+        ]
+    },
+
+    "启动App": {
+        "is_sub": true,
+        "action": "StartApp",
+        "package": "com.nexon.bluearchive/.MxUnityPlayerActivity"
+    },
+    
+    "点击登录按钮": {
+        "recognition": "OCR",
+        "expected": "TOUCH TO START",
+        "action": "Click",
+        "next":[
+            "跳过登录后推送",
+
+            "跳过登录前推送",
+
+            "每日签到",
+            
+            "点击登录按钮",
+
+            "检测是否在加载"
+        ]
+    },
+
+    "N 检测更新":{
+        "recognition": "OCR",
+        "expected": "Update",
+        "action": "StopTask"
+    },
+
+    "检测报错":{
+        "recognition": "OCR",
+        "expected":"Notice",
+        "action": "StopTask"
+    },
+
+    "每日签到":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "Attendance!",
+        "action": "Click"
+    },
+
+    "跳过登录前推送":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": "Don't show again today",
+        "action": "Click"
+    },
+
+    "跳过登录后推送":{
+        "recognition": "TemplateMatch",
+        "template": "X.png",
+        "action": "Click",
+        "next":[
+            "检测主界面"
+        ]
+    },
+
+    "N 跳过商店登录提示":{
+        "recognition": "OCR",
+        "expected": "Confirm",
+        "action": "Click"
+    },
+
+    "检测主界面":{
+        "recognition": "TemplateMatch",
+        "template": "Tasks.png",
+        "green_mask": true,
+        "action": "Click",
+        "pre_delay": 2000,
+        "target": [380,30,0,0]
+    },
+
+    "检测是否在加载":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected": ["NowLoading","NowLoading.","NowLoading..","NowLoading...","Now Loading","Now Loading.","Now Loading..","Now Loading..."],
+        "pre_delay": 1000
+    }
+}

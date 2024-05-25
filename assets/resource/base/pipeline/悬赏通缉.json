@@ -1,0 +1,133 @@
+{
+    "悬赏通缉":{
+        "next":[
+            "检测悬赏通缉",
+
+            "检测进入战斗大厅",
+
+            "检测是否在加载",
+
+            "检测UI",
+
+            "进入战斗大厅"
+        ]
+    },
+
+    "检测进入战斗大厅":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Campaign",
+        "roi": [100, 5, 425, 40]
+    },
+
+    "检测悬赏通缉":{
+        "recognition": "OCR",
+        "expected":"Bounty",
+        "next":[
+            "检测进入悬赏通缉",
+
+            "检测是否在加载",
+
+            "进入悬赏通缉"
+        ]
+
+    },
+
+    "检测进入悬赏通缉":{
+        "recognition": "OCR",
+        "expected":"Bounty",
+        "roi": [100, 5, 425, 40],
+        "next":[
+            "检测进入高速公路",
+
+            "检测是否在加载",
+
+            "进入高速公路"
+        ]
+    },
+
+    "检测进入高速公路":{
+        "recognition": "OCR",
+        "expected":"Bounty - Overpass",
+        "roi": [98, 136, 515, 51],
+        "next":[
+            "检测进入关卡（MAX）",
+
+            "检测是否在加载",
+
+            "进入关卡",
+
+            "向上滑动关卡列表"
+        ]
+    },
+
+    "检测进入关卡（MAX）":{
+        "recognition": "OCR",
+        "expected":"Info",
+        "next":[
+            "选择max"
+        ]
+    },
+
+    "检测扫荡完成":{
+        "recognition": "OCR",
+        "expected":"Sweep Complete",
+        "next":[
+            "退出"
+        ]
+    },
+
+    "进入战斗大厅":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Campaign",
+        "roi": [1119, 601, 145, 37],
+        "action": "Click"
+    },
+
+    "进入悬赏通缉":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Bounty",
+        "action": "Click"
+    },
+
+    "进入高速公路":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"Overpass",
+        "action": "Click"
+    },
+
+    "进入关卡":{
+        "is_sub": true,
+        "recognition": "OCR",
+        "expected":"06",
+        "action": "Click",
+        "target_offset": [400,0,0,0]
+    },
+
+    "选择max":{
+        "recognition": "OCR",
+        "expected":"Max",
+        "action": "Click",
+        "next":[
+            "开始扫荡"
+        ]
+    },
+
+    "开始扫荡":{
+        "recognition": "OCR",
+        "expected":"Start Sweep",
+        "action": "Click",
+        "next":[
+            "检测扫荡完成",
+
+            "检测是否无票券",
+
+            "检测是否在加载",
+
+            "确认"
+        ]
+    }
+}
